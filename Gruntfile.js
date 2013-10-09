@@ -1,20 +1,12 @@
 module.exports = function(grunt) {
 
   // Project configuration.
-  grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json')
-
-//,
-//    uglify: {
-//      options: {
-//        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-//      },
-//      build: {
-//        src: 'src/<%= pkg.name %>.js',
-//        dest: 'build/<%= pkg.name %>.min.js'
-//      }
+//  grunt.initConfig({
+//    //pkg: grunt.file.readJSON('package.json'),
+//    
+//      
 //    }
-  });
+//  });
 
   // Load the plugin that provides the "uglify" task.
 //  grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -45,6 +37,11 @@ module.exports = function(grunt) {
   // Jasmine Tests
   grunt.loadNpmTasks('grunt-contrib-jasmine');
 
+
+//JSHint    
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+
+
 grunt.initConfig({
   jasmine: {
     pivotal: {
@@ -54,7 +51,19 @@ grunt.initConfig({
         helpers: 'test/jasmine-standalone-1.3.1/spec/*Helper.js'
       }
     }
-  }
+  },
+    jshint: {
+      files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
+      options: {
+        // options here to override JSHint defaults
+        globals: {
+          jQuery: true,
+          console: true,
+          module: true,
+          document: true
+        }
+      }
+    }
 });
   
 };
