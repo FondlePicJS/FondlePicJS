@@ -21,27 +21,19 @@ module.exports = function(grunt) {
   grunt.registerTask('runTests', [], function() {
   	grunt.log.error('Test errors');
   });
-
-
-  grunt.registerTask('parent', [], function() {
-  	grunt.log.writeln('In parent task');
-  	  grunt.task.run('child');
-
-  });
-
-  grunt.registerTask('child', [], function() {
-  	grunt.log.writeln('In child task');
-  });
-  
   
   // Jasmine Tests
   grunt.loadNpmTasks('grunt-contrib-jasmine');
 
 
-//JSHint    
+    //JSHint    
     grunt.loadNpmTasks('grunt-contrib-jshint');
 
+    //Coverage
 
+    	grunt.registerTask('test:coverage', ['jasmine:coverage']);
+
+    
 grunt.initConfig({
   jasmine: {
     pivotal: {
@@ -50,7 +42,36 @@ grunt.initConfig({
         specs: 'test/jasmine-standalone-1.3.1/spec/*Spec.js',
         helpers: 'test/jasmine-standalone-1.3.1/spec/*Helper.js'
       }
-    }
+    },
+      coverage: {
+				src: 'src/js/*.js',
+				options: {
+					specs: 'test/jasmine-standalone-1.3.1/spec/*.js',
+					template: require('grunt-template-jasmine-istanbul'),
+					templateOptions: {
+						coverage: 'build/coverage/coverage.json',
+						report: [
+							{
+								type: 'html',
+								options: {
+									dir: 'build/coverage/html'
+								}
+							},
+							{
+								type: 'cobertura',
+								options: {
+									dir: 'build/coverage/cobertura'
+								}
+							},
+							{
+								type: 'text-summary'
+							}
+						]
+					}
+				}
+			}
+      
+      
   },
     jshint: {
       files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
@@ -64,6 +85,7 @@ grunt.initConfig({
         }
       }
     }
+    
 });
   
 };
