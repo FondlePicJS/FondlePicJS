@@ -5,12 +5,10 @@ FonePicJS is coming soon :)
 
 ## Developer installation
 
-Required tools for Grunt use.
+##Tasks
 
- * Istanbul - npm install grunt-istanbul
-
-##Running tests
+###Run the Jasmine Unit Tests and JSHint via default task
 
 <pre>
-grunt jasmine
+grunt
 </pre>
