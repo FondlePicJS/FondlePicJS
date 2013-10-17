@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<title>Dealer Portal Mobile</title>
+		<!--link href="css/some_stylesheet.css" rel="stylesheet" /-->
+		<script src="../../src/js/hammer.min.js"></script>
+		<script src="../../src/js/core.js"></script>
+	</head>
+	<body>
+		<div>
+
+			<input type="file" id="fileUpload" name="fileUpload" accept="image/*" style='display:none' />
+			<input type="button" id='addImageButton' value="Add Image"><br/>
+			<canvas id="imagePreview" width="318" height="239"style="border:1px solid #000000;"></canvas>
+		</div>
+	</body>	
+	<script type='text/javascript'>
+		var addImageButton = document.getElementById("addImageButton");
+		addImageButton.addEventListener('click', function() {
+			document.getElementById("fileUpload").click();
+		}, false);
+				
+		var fondleCanvas = document.getElementById("imagePreview");
+		FondlePic(fondleCanvas);
+	</script>
+</head>
