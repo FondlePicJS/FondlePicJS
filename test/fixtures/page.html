@@ -1,8 +1,9 @@
 <html>
 	<head>
-		<title>Dealer Portal Mobile</title>
+		<title>FondlePic Example</title>
 		<!--link href="css/some_stylesheet.css" rel="stylesheet" /-->
 		<script src="../../src/js/hammer.min.js"></script>
+		<script src="../../src/js/exif.js"></script>		
 		<script src="../../src/js/core.js"></script>
 	</head>
 	<body>
@@ -19,7 +20,6 @@
 			document.getElementById("fileUpload").click();
 		}, false);
 				
-		var fondleCanvas = document.getElementById("imagePreview");
-		FondlePic(fondleCanvas);
+		FondlePic("imagePreview", {imageFile: 'fileUpload'});
 	</script>
 </head>
