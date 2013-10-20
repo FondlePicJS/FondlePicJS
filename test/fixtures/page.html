@@ -10,7 +10,13 @@
 		<div>
 
 			<input type="file" id="fileUpload" name="fileUpload" accept="image/*" style='display:none' />
-			<input type="button" id='addImageButton' value="Add Image"><br/>
+			<input type="button" id='addImageButton' value="Add Image">
+			<input type="button" id='zoomInButton' value="+">
+			<input type="button" id='zoomOutButton' value="-">
+			<input type="button" id='rotateLeftButton' value=&#8634>
+			<input type="button" id='rotateRightButton' value=&#8635>						
+			<br/>
+			
 			<canvas id="imagePreview" width="318" height="239"style="border:1px solid #000000;"></canvas>
 		</div>
 	</body>	
@@ -20,6 +26,9 @@
 			document.getElementById("fileUpload").click();
 		}, false);
 				
-		FondlePic("imagePreview", {imageFile: 'fileUpload'});
+		FondlePic('imagePreview', 'fileUpload', { zoomInButton: 'zoomInButton', 
+								   				  zoomOutButton: 'zoomOutButton',
+												  rotateLeftButton: 'rotateLeftButton',
+												  rotateRightButton: 'rotateRightButton', });
 	</script>
 </head>
